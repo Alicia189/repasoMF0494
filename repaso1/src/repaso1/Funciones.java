@@ -1,5 +1,7 @@
 package repaso1;
 
+import java.util.Scanner;
+
 public class Funciones {
 
 	public static void mostrarPrecio(double precio, String marca) {
@@ -43,5 +45,30 @@ public class Funciones {
 		sueldoFinal=sueldo+incremento;
 		return sueldoFinal;
 	}
+	
+	public static void  pedir_vector(int v[]) {
+		Scanner entrada = new Scanner(System.in);
+		
+		for (int i = 0; i < v.length; i++) {
+			System.out.printf("Introduce el elemento %d: ", i);
+			v[i] = entrada.nextInt();
+		}
+	}
+	
+	
+	public static void  mostrar_vector(int v[]) {
+		for (int i = 0; i < v.length; i++) {
+			System.out.printf("%3d ", v[i]);
+		}
+		System.out.println();
+	}
+	
+	public static void multiplicaPorNum(int v[], int num) {
+		for (int i = 0; i < v.length; i++) {
+			v[i]=v[i]*num;
+		}
+	}
+	
+	
 	
 }
