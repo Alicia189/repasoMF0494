@@ -31,6 +31,10 @@ public class VentanaGimnasio extends JFrame {
 	private final ButtonGroup buttonGroup = new ButtonGroup();
 	private JComboBox comboBox;
 	private JLabel lblPrecio;
+	private JRadioButton rdbSin;
+	private JRadioButton rdbFamiliar;
+	private JRadioButton rdbJoven;
+	private JTextArea textArea;
 
 	/**
 	 * Launch the application.
@@ -103,16 +107,16 @@ public class VentanaGimnasio extends JFrame {
 		JLabel lblNewLabel_5 = new JLabel("Descuento:");
 		contentPane.add(lblNewLabel_5, "cell 1 3");
 		
-		JRadioButton rdbSin = new JRadioButton("Sin descuento");
+		rdbSin = new JRadioButton("Sin descuento");
 		rdbSin.setSelected(true);
 		buttonGroup.add(rdbSin);
 		contentPane.add(rdbSin, "cell 2 3");
 		
-		JRadioButton rdbFamiliar = new JRadioButton("Familiar");
+		rdbFamiliar = new JRadioButton("Familiar");
 		buttonGroup.add(rdbFamiliar);
 		contentPane.add(rdbFamiliar, "cell 3 3");
 		
-		JRadioButton rdbJoven = new JRadioButton("Joven");
+		rdbJoven = new JRadioButton("Joven");
 		buttonGroup.add(rdbJoven);
 		contentPane.add(rdbJoven, "cell 4 3");
 		
@@ -128,7 +132,8 @@ public class VentanaGimnasio extends JFrame {
 		JScrollPane scrollPane = new JScrollPane();
 		contentPane.add(scrollPane, "cell 0 5 5 1,grow");
 		
-		JTextArea textArea = new JTextArea();
+		textArea = new JTextArea();
+		textArea.setLineWrap(true);
 		scrollPane.setViewportView(textArea);
 		
 		JButton btnNewButton = new JButton("Aceptar");
@@ -141,6 +146,19 @@ public class VentanaGimnasio extends JFrame {
 	}
 
 	protected void muestraResultado() {
+		int precio = Integer.parseInt(lblPrecio.getText());
+		double descuento=0;
+		if (rdbFamiliar.isSelected()) {
+			descuento=precio*0.1;
+		} else if (rdbJoven.isSelected()) {
+			descuento = precio*0.15;
+		}
+		
+		String seleccionado = (String) comboBox.getSelectedItem();
+		double precioFinal = precio-descuento;
+		textArea.setText(textArea.getText()+ "El cliente "+txtNombre.getText()+ " "+ txtApellidos.getText()+
+		     " ha contratado el "+seleccionado+ " por un precio de "+precio+
+		     " que con descuento "+descuento + " queda "+ precioFinal+"\n");
 		
 	}
 
