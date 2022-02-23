@@ -24,4 +24,24 @@ public class Funciones {
 
 	}
 	
+	public static double calcularSueldo(int años) {
+		double sueldo = 40000;
+		double incremento =0;
+		double sueldoFinal;
+		
+		if (años >10 ) {
+			incremento= sueldo*0.1;
+		} else if (años>5 && años<=10) {
+			incremento = sueldo * 0.07;
+		} else if(años > 3 && años <=5) {
+			incremento =sueldo*0.05;
+		} else if(años <=3 && años >0) {
+			incremento = sueldo*0.03;
+		} else {
+			incremento=0;
+		}
+		sueldoFinal=sueldo+incremento;
+		return sueldoFinal;
+	}
+	
 }
